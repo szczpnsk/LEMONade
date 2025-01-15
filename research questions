@@ -5,3 +5,108 @@
 #Can we identify individuals' stress levels and coping styles based on their personality traits, physiological responses, and brain activity?
 - Why it's relevant: Insights could help design personalized stress management strategies.  
 - Dataset focus: Use personality test data, physiological measures, and EEG.  
+
+
+### Steps to Tackle Research Question 2 or 3  
+Here’s how you can approach these two research questions using the guidelines and steps from the files you shared:
+
+### Research Question 2:  
+*"How do brain structure and physiological factors influence cognitive performance in younger vs. older adults?"*
+
+#### Steps  
+1. Define Your Goals:  
+   - Identify the cognitive tests from the dataset (e.g., working memory, verbal fluency).  
+   - Select relevant brain structure features (MRI data) and physiological signals.  
+
+2. Dataset Preprocessing:  
+   - Extract and clean the cognitive performance data, MRI data, and physiological features.  
+   - Normalize all numerical features (as shown in the data preprocessing section in the ML file).  
+
+3. Data Exploration:  
+   - Compare cognitive performance and physiological/brain structure data between younger and older adults.  
+   - Use PCA or t-SNE for dimensionality reduction if MRI features are too complex.  
+
+4. Model Choice:  
+   - Use regression models if the target is continuous (e.g., memory test scores).  
+   - Use classification models if grouping participants by cognitive performance levels (e.g., low, medium, high).  
+
+5. Training and Evaluation:  
+   - Train the model using physiological and MRI features to predict cognitive performance.  
+   - Evaluate using metrics like Mean Squared Error (MSE) or R² for regression, or accuracy for classification.  
+
+6. Analysis:  
+   - Compare feature importance to identify key brain and physiological factors influencing cognitive performance.  
+
+---
+
+### Research Question 3:  
+*"Can we identify individuals' stress levels and coping styles based on their personality traits, physiological responses, and brain activity?"*
+
+#### Steps  
+1. Define Your Goals:  
+   - Use stress-related labels from the dataset (e.g., Perceived Stress Questionnaire, PSQ).  
+   - Focus on personality traits (Big Five, emotional intelligence) and physiological features (e.g., heart rate, EEG).  
+
+2. Dataset Preprocessing:  
+   - Clean and preprocess the stress labels, personality data, and physiological measures.  
+   - Normalize the features and handle missing values.  
+
+3. Data Exploration:  
+   - Visualize correlations between stress levels and predictors (e.g., stress vs. heart rate variability).  
+   - Identify patterns in stress levels based on age or other demographics.  
+
+4. Model Choice:  
+   - Use classification if stress levels are categorical (e.g., low, medium, high).  
+   - Use regression if stress is measured as a continuous variable (e.g., PSQ scores).  
+
+5. Training and Evaluation:  
+   - Train the model using personality and physiological data as input and stress levels as the output.  
+   - Evaluate using metrics like accuracy (classification) or R² (regression).  
+
+6. Analysis:  
+   - Investigate which predictors (e.g., personality traits or physiological signals) have the most influence on stress levels.  
+
+---
+
+### General Steps for Both Questions  
+Based on the ML project guidelines from the file:  
+
+1. Formulate the Research Question  
+   - Clearly state your hypothesis. For example:
+     - Question 2: Brain structure and physiological features significantly influence cognitive test results.
+     - Question 3: Personality traits and physiological data can predict stress levels.
+
+2. Choose the Dataset Accordingly  
+   - Use subsets of the LEMON dataset:
+     - For Question 2: Cognitive test scores, MRI, physiological features.  
+     - For Question 3: Stress levels, personality traits, EEG, and physiological features.  
+
+3. Data Preprocessing  
+   - Standardize the data and handle missing values.  
+   - Normalize numerical data using the formula:  
+     \( x(i) = \frac{x(i) - \mu}{\sigma} \)  
+     where \( \mu \) is the mean and \( \sigma \) is the standard deviation.  
+
+4. Data Exploration  
+   - Analyze correlations and relationships.  
+   - Reduce dimensionality if needed (e.g., PCA for MRI data).  
+
+5. Choose the ML Methodology  
+   - For regression: Linear Regression, Ridge Regression.
+
+   - For classification: Logistic Regression, Random Forest, or Neural Networks.  
+
+6. Train and Fine-Tune the Model  
+   - Train the model iteratively while monitoring loss curves.  
+   - Tune hyperparameters to reduce overfitting (adjust regularization, etc.).  
+
+7. Evaluate the Model  
+   - For Question 2: Use regression metrics (MSE, R²).  
+   - For Question 3: Use classification metrics (accuracy, F1-score).  
+
+8. Present Results  
+   - Follow the presentation structure from the ML file:  
+     1. Research question and hypothesis.  
+     2. Dataset and preprocessing.  
+     3. Model training and evaluation.  
+     4. Key findings and conclusions.  
