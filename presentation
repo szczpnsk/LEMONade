@@ -4,7 +4,7 @@ preprocess the dataset
 
 class
 
-main arguments
+name; arguments
 output
 
 
@@ -147,5 +147,100 @@ Describe the key functionalities your project should implement:
   - `jupyter`: For interactive coding and visualization.
 
 ---
+Presentation: Advanced Programming Research Project
+Research Question
+Can we identify individuals' stress levels and coping styles based on their personality traits, physiological responses, and brain activity?
 
-Would you like help with specific slides or more technical details for each section?
+1. Requirements
+
+Data:
+LEMON dataset containing:
+Personality traits.
+Physiological responses (e.g., heart rate variability).
+Brain activity (EEG data).
+
+Algorithms:
+Machine Learning models for:
+Stress level prediction.
+Coping style classification.
+
+Infrastructure:
+Python-based analysis tools.
+Libraries like TensorFlow or PyTorch for modeling.
+
+Validation:
+Performance metrics: Accuracy, Precision, Recall, ROC-AUC.
+
+2. Features
+Automated Stress Detection:
+Predict stress levels using physiological and EEG data.
+
+Coping Style Classification:
+Categorize individuals into coping styles based on personality and brain activity.
+
+Interactive Visualization:
+Present results using visualization libraries such as matplotlib and seaborn.
+
+3. Expected Challenges
+Data Preprocessing:
+Managing noisy EEG and physiological data.
+
+Model Overfitting:
+Preventing overfitting with regularization and cross-validation.
+
+Feature Selection:
+Identifying the most predictive features for stress and coping style.
+
+Interpretability:
+Explaining model decisions in an intuitive way.
+
+4. Milestones and Work Distribution
+Dataset Familiarization:
+Understand the structure and contents of the LEMON dataset.
+
+Preprocessing:
+Clean, normalize, and extract key features from the data.
+
+Model Design:
+Develop algorithms for stress level prediction and coping style classification.
+
+Validation:
+Evaluate models using performance metrics.
+
+Presentation Preparation:
+Create slides and organize findings cohesively.
+
+Work Distribution:
+Assign tasks for data preparation, modeling, visualization, and presentation.
+
+5. Classes Design
+Core Classes:
+DataLoader:
+Load and preprocess the LEMON dataset.
+
+FeatureExtractor:
+Extract relevant features from physiological and EEG data.
+
+Model:
+Define machine learning models for predictions.
+
+Visualizer:
+Create plots and interpret results.
+
+6. Libraries
+Data Processing:
+pandas, numpy
+
+Machine Learning:
+scikit-learn, TensorFlow, PyTorch
+
+Visualization:
+matplotlib, seaborn, Plotly
+
+EEG Analysis:
+MNE-Python
+
+Summary
+This research project explores the identification of stress levels and coping styles using advanced data analysis and machine learning techniques. Leveraging the LEMON dataset, we aim to deliver a comprehensive and insightful approach to understanding stress and coping mechanisms. The combination of robust preprocessing, advanced modeling, and clear visualization ensures actionable insights and meaningful contributions to the field of stress research.
+
+
