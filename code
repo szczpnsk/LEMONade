@@ -71,3 +71,13 @@ STAXI_reduced = STAXI_renamed[['Control']]
 concat_df = pd.concat([TAS_reduced, STAXI_reduced], axis=1)
 
 concat_df.head()
+
+plt.hist(concat_df['Control'], bins=20, color='blue', edgecolor='black', alpha=0.7)
+
+# Add titles and labels
+plt.title('Histogram of Control')
+plt.xlabel('Control Values')
+plt.ylabel('Frequency')
+
+# Show the plot
+plt.show()
