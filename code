@@ -1,0 +1,73 @@
+import pandas as pd
+
+#Loading the TAS dataset
+file_path = '/content/TAS.csv'
+df_TAS = pd.read_csv(file_path, delimiter='\t', quotechar='"', header=0)
+
+print(df_TAS.head())
+split_columns_TAS = df_TAS[',TAS_Identification,TAS_Describing,TAS_ExternalThinking,TAS_OverallScore'].str.split(",", expand=True)
+split_columns_TAS.head()
+
+df_TAS.head()
+
+TAS_renamed = split_columns_TAS.rename(columns={
+    0: "Participant",
+    1: "Identification",
+    2: "Describing",
+    3: "ExternalThinking",
+    4: "OverallScore"
+})
+
+TAS_renamed.head()
+
+#Getting rid of quotations marks in the data
+TAS_renamed['Identification'] = TAS_renamed['Identification'].str.strip('"').astype(int)
+TAS_renamed['Describing'] = TAS_renamed['Describing'].str.strip('"').astype(int)
+TAS_renamed['ExternalThinking'] = TAS_renamed['ExternalThinking'].str.strip('"').astype(int)
+TAS_renamed['OverallScore'] = TAS_renamed['OverallScore'].str.strip('"').astype(int)
+
+#Loading the STAXI dataset
+file_path2 = '/content/STAXI.csv'
+df_STAXI = pd.read_csv(file_path2, delimiter='\t', quotechar='"', header=0)
+
+print(df_STAXI.head())
+
+split_columns_STAXI = df_STAXI[',STAXI_State_Anger,STAXI_Trait_Anger,STAXI_TAT,STAXI_TAR,STAXI_AI,STAXI_AO,STAXI_AC'].str.split(",", expand=True)
+
+split_columns_STAXI.head()
+
+#Renaming the column that interests us
+STAXI_renamed = split_columns_STAXI.rename(columns={
+    7 : "Control"
+})
+
+STAXI_renamed['Control'] = STAXI_renamed['Control'].str.strip('"').astype(int)
+
+STAXI_renamed.head()
+
+STAXI_renamed.info()
+
+print(df_TAS.columns)
+
+df_TAS.rename(columns={
+    "TAS_Identification": "Identification",
+    "TAS_Describing": "Describing",
+    "TAS_OverallScore": "OverallScore"
+}, inplace=True)
+
+df_STAXI.columns
+
+df_STAXI = df_STAXI.rename(columns={
+    "STAXI_AC": "Control"
+})
+
+TAS_reduced = TAS_renamed[['Participant', 'Identification', 'Describing', 'OverallScore']]
+
+TAS_reduced.head()
+
+STAXI_reduced = STAXI_renamed[['Control']]
+
+#Merging the two datasets
+concat_df = pd.concat([TAS_reduced, STAXI_reduced], axis=1)
+
+concat_df.head()
