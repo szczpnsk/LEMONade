@@ -1,0 +1,103 @@
+# **Alexithymia and Anger Control: A Machine Learning Approach**
+
+## **1. Theory - Presentation**
+
+### **1.1 Research Question**
+- How does alexithymia (measured by TAS) influence anger control (measured by STAXI)?
+- Investigating whether difficulty in identifying and describing emotions correlates with lower anger regulation.
+- Importance: Enhancing psychological understanding and improving interventions for emotional regulation.
+
+### **1.2 Features**
+- **Independent Variables (X - TAS Subscales)**:
+  - Difficulty Identifying Feelings (DIF)
+  - Difficulty Describing Feelings (DDF)
+  - Externally Oriented Thinking (EOT)
+- **Dependent Variable (Y - STAXI Anger Control Score)**:
+  - Anger Control-In (controlling internal anger)
+  - Anger Control-Out (controlling external anger)
+
+### **1.3 Expected Challenges**
+- **Data Issues**: Missing or incomplete responses in TAS and STAXI scores.
+- **Feature Selection**: Determining which TAS subscales best predict Anger Control.
+- **Assumptions of Linear Regression**: Ensuring normality, homoscedasticity, and absence of multicollinearity.
+- **Interpreting Psychological Variables**: Understanding whether a linear model captures the complexity of human emotion regulation.
+
+### **1.4 Milestones and Work Distribution**
+- **Data Collection & Cleaning**: Extract relevant TAS and STAXI scores from LEMON dataset.
+- **Exploratory Data Analysis (EDA)**: Summary statistics, correlation analysis, and feature selection.
+- **Model Training & Evaluation**: Implement linear regression, check performance (R², MAE), and analyze residuals.
+- **Final Report & Presentation**: Interpret findings, discuss implications, and present results.
+
+### **1.5 Classes Design**
+- **DataLoader Class**: Handles dataset import, preprocessing, and feature extraction.
+- **RegressionModel Class**: Implements linear regression using scikit-learn.
+- **EvaluationMetrics Class**: Computes R², MAE, and residual diagnostics.
+- **Visualization Class**: Generates histograms, scatter plots, and residual analysis.
+
+### **1.6 Libraries**
+- **pandas**: Data manipulation and preprocessing.
+- **numpy**: Numerical computations.
+- **matplotlib & seaborn**: Data visualization.
+- **scikit-learn**: Linear regression model and performance evaluation.
+
+---
+## **2. Practical - Code and Git**
+
+### **2.1 Clean Code**
+- Follow PEP 8 standards.
+- Use meaningful variable and function names.
+- Modularize code into functions/classes.
+
+### **2.2 Documentation**
+- Include docstrings explaining each function/class.
+- Write a README detailing how to run the project.
+
+### **2.3 Review of a PR**
+- Peer review pull requests (PRs) before merging.
+- Check for bugs, efficiency, and adherence to project structure.
+
+### **2.4 Commits with Regularity and Clear Description**
+- Frequent, atomic commits (e.g., "Added data preprocessing step").
+- Maintain a clear commit history for traceability.
+
+### **2.5 Successful PR and Merge from Your Branch**
+- Ensure code passes tests before merging.
+- Maintain a structured Git workflow (feature branches, main branch stability).
+
+### **2.6 Implementation of a Class**
+- Develop well-structured classes for data handling, model training, and evaluation.
+
+### **2.7 Requirements File**
+- Maintain a `requirements.txt` with all dependencies.
+- Example:
+  ```
+  pandas
+  numpy
+  scikit-learn
+  matplotlib
+  seaborn
+  ```
+
+---
+## **3. Project Presentation**
+
+### **3.1 Presentation Guidelines**
+- **Duration**: 15 minutes per group.
+- **Date**: 23rd-24th.
+- **Content**: Must include all required points.
+
+### **3.2 Presentation Structure**
+1. **Research Question & Importance**
+2. **Dataset Overview**
+3. **Features & Challenges**
+4. **Data Preprocessing & Exploration**
+5. **Model Choice (Linear Regression) & Justification**
+6. **Training Process & Model Evaluation**
+7. **Findings & Discussion**
+8. **Future Improvements**
+9. **Conclusions**
+10. **Q&A Session**
+
+---
+This document provides an expanded plan for both the theoretical presentation and practical execution of the project, ensuring a structured and well-documented approach. Would you like me to format this into PowerPoint slides for you?
+
