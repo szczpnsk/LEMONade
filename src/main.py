@@ -88,10 +88,16 @@ plt.show()
 
 # Pearson correlation coefficient
 # Calculate the correlation between each IV and the DV
-correlations = merged_df[[['Identification', 'Describing', 'External_Thinking']] + ['Control']].corr()
+independent_vars = merged_df[['Identification', 'Describing', 'External_Thinking']]
+dependent_var = merged_df['Control']
+
+combined_df = pd.concat([independent_vars, dependent_var], axis=1)
+
+correlation_matrix = combined_df.corr()
 
 # Extract the correlation between each IV and 'Control'
-correlations_with_control = correlations['Control'][:-1]  # Exclude 'Control' from the result
+correlations_with_control = correlation_matrix['Control'][:-1]  # Exclude 'Control' from the result
 
 # Print the correlations
 print(correlations_with_control)
+
