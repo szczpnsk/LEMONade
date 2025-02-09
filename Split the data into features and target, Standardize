@@ -1,0 +1,50 @@
+import pandas as pd
+from sklearn.model_selection import train_test_split # type: ignore
+from sklearn.preprocessing import StandardScaler # type: ignore
+
+# Load your datasets
+file_path_TAS = r"C:\Users\Lenovo\Desktop\TAS.csv"
+file_path_STAXI = r"C:\Users\Lenovo\Desktop\STAXI.csv"
+
+# Loading the TAS dataset
+df_TAS = pd.read_csv(file_path_TAS, delimiter=',', quotechar='"', header=0)
+print("df_TAS columns:")
+print(df_TAS.columns)
+
+# Loading the STAXI dataset
+df_STAXI = pd.read_csv(file_path_STAXI, delimiter=',', quotechar='"', header=0)
+print("df_STAXI columns:")
+print(df_STAXI.columns)
+
+# Merge the TAS and STAXI dataframes on the common 'ID' column (since 'Participant' column doesn't exist)
+df = pd.merge(df_TAS, df_STAXI, left_on='ID', right_on='ID')  # Merge on 'ID'
+
+# Clean and prepare TAS and STAXI data (this is an example, modify according to your needs)
+df_TAS['Identification'] = df_TAS['TAS_Identification']
+df_TAS['Describing'] = df_TAS['TAS_Describing']
+df_TAS['ExternalThinking'] = df_TAS['TAS_ExternalThinking']
+df_TAS['OverallScore'] = df_TAS['TAS_OverallScore']
+
+df_STAXI['Control'] = df_STAXI['STAXI_AC']
+
+# Merge the cleaned TAS and STAXI dataframes again
+df = pd.merge(df_TAS, df_STAXI, left_on='ID', right_on='ID')
+
+# Now you can split the data into features and target
+features = df[['Identification', 'Describing', 'ExternalThinking']]  # Your independent variables
+target = df['Control']  # Your dependent variable (Anger Control)
+
+# Split the data into train and test sets
+X_train, X_test, y_train, y_test = train_test_split(features, target, test_size=0.2, random_state=42)
+
+# Standardize the features
+scaler = StandardScaler()
+X_train_scaled = scaler.fit_transform(X_train)
+X_test_scaled = scaler.transform(X_test)
+
+# Convert back to DataFrame (optional)
+X_train_scaled = pd.DataFrame(X_train_scaled, columns=features.columns)
+X_test_scaled = pd.DataFrame(X_test_scaled, columns=features.columns)
+
+print("Standardized Data Sample:")
+print(X_train_scaled.head())
