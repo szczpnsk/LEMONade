@@ -48,3 +48,22 @@ X_test_scaled = pd.DataFrame(X_test_scaled, columns=features.columns)
 
 print("Standardized Data Sample:")
 print(X_train_scaled.head())
+
+
+
+results in terminal:
+df_TAS columns:
+Index(['ID', 'TAS_Identification', 'TAS_Describing', 'TAS_ExternalThinking',
+       'TAS_OverallScore'],
+      dtype='object')
+df_STAXI columns:
+Index(['ID', 'STAXI_State_Anger', 'STAXI_Trait_Anger', 'STAXI_TAT',
+       'STAXI_TAR', 'STAXI_AI', 'STAXI_AO', 'STAXI_AC'],
+      dtype='object')
+Standardized Data Sample:
+   Identification  Describing  ExternalThinking
+0        0.905373    0.315787         -0.109563
+1       -1.280771   -0.481990         -0.109563
+2        0.176658    0.049861         -0.109563
+3       -0.794962   -0.216065         -1.314760
+4       -0.066247   -0.216065          1.095633
