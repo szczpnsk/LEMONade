@@ -101,3 +101,6 @@ correlations_with_control = correlation_matrix['Control'][:-1]  # Exclude 'Contr
 # Print the correlations
 print(correlations_with_control)
 
+# Checking for multicollinearity
+independent_corr = independent_vars.corr()
+print(independent_corr)
