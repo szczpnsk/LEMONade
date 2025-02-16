@@ -1,0 +1,63 @@
+import pandas as pd
+from sklearn.model_selection import train_test_split  # type: ignore
+from sklearn.preprocessing import StandardScaler  # type: ignore
+from sklearn.linear_model import LinearRegression  # Import Linear Regression model
+from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score  # Import evaluation metrics
+
+# Load your datasets
+file_path_TAS = r"C:\Users\Lenovo\Desktop\TAS.csv"
+file_path_STAXI = r"C:\Users\Lenovo\Desktop\STAXI.csv"
+
+# Loading the TAS dataset
+df_TAS = pd.read_csv(file_path_TAS, delimiter=',', quotechar='"', header=0)
+
+# Loading the STAXI dataset
+df_STAXI = pd.read_csv(file_path_STAXI, delimiter=',', quotechar='"', header=0)
+
+# Merge the TAS and STAXI dataframes on the common 'ID' column
+df = pd.merge(df_TAS, df_STAXI, left_on='ID', right_on='ID')
+
+# Select relevant features and target variable
+df['Identification'] = df['TAS_Identification']
+df['Describing'] = df['TAS_Describing']
+df['ExternalThinking'] = df['TAS_ExternalThinking']
+df['OverallScore'] = df['TAS_OverallScore']
+df['Control'] = df['STAXI_AC']  # Anger Control (Target Variable)
+
+# Features (Independent Variables) and Target (Dependent Variable)
+features = df[['Identification', 'Describing', 'ExternalThinking']]
+target = df['Control']
+
+# Split into training and test sets
+X_train, X_test, y_train, y_test = train_test_split(features, target, test_size=0.2, random_state=42)
+
+# Standardize the features
+scaler = StandardScaler()
+X_train_scaled = scaler.fit_transform(X_train)
+X_test_scaled = scaler.transform(X_test)
+
+# Convert back to DataFrame (optional)
+X_train_scaled = pd.DataFrame(X_train_scaled, columns=features.columns)
+X_test_scaled = pd.DataFrame(X_test_scaled, columns=features.columns)
+
+# **Train the Linear Regression Model**
+model = LinearRegression()
+model.fit(X_train_scaled, y_train)
+
+# **Make Predictions**
+y_pred = model.predict(X_test_scaled)
+
+# **Evaluate the Model**
+r2 = r2_score(y_test, y_pred)
+mae = mean_absolute_error(y_test, y_pred)
+mse = mean_squared_error(y_test, y_pred)
+
+print("\nModel Evaluation:")
+print(f"R² Score: {r2:.4f}")  # Closer to 1 means a better fit
+print(f"Mean Absolute Error (MAE): {mae:.4f}")
+print(f"Mean Squared Error (MSE): {mse:.4f}")
+
+# **Display Model Coefficients**
+print("\nModel Coefficients:")
+for feature, coef in zip(features.columns, model.coef_):
+    print(f"{feature}: {coef:.4f}")
