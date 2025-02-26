@@ -49,7 +49,20 @@ X_test_scaled = pd.DataFrame(X_test_scaled, columns=features.columns)
 print("Standardized Data Sample:")
 print(X_train_scaled.head())
 
+# Histogram of Anger Control (Target Variable)
+# To understand the distribution of STAXI Anger Control scores:
 
+import matplotlib.pyplot as plt # type: ignore
+import seaborn as sns # type: ignore
+
+# Plot histogram
+plt.figure(figsize=(8, 5))
+sns.histplot(df['Control'], bins=20, kde=True, color='skyblue')
+
+plt.title("Distribution of Anger Control Scores")
+plt.xlabel("Anger Control Score")
+plt.ylabel("Frequency")
+plt.show()
 
 results in terminal:
 df_TAS columns:
